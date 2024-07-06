@@ -13,8 +13,14 @@
     font-family: Italianno;
     font-size: 64px;
    color: white;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1rem;
+    @media (max-width: 570px) {
+      text-align: center;
+    }
+    @media (max-width: 475px) {
+      font-size: 39px;
+    }
   }
   &__subtitle {
     color: white;

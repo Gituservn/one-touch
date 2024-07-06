@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './AboutUs.module.scss'
+import { useMediaQuery } from 'usehooks-ts'
 const AboutUs = () => {
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 500px)')
   return (
     <section className={styles.aboutUs}>
       <div className={styles.aboutUs__textWrapper}>
@@ -18,7 +22,13 @@ const AboutUs = () => {
         </p>
       </div>
       <div className={styles.aboutUs__imageWrapper}>
-        <Image src="/images/chef.webp" alt="chef" width={500} height={300} />
+        <Image
+          src="/images/chef.webp"
+          alt="chef"
+          width={500}
+          height={300}
+          layout={isSmallDevice ? 'responsive' : 'undefined'}
+        />
       </div>
     </section>
   )

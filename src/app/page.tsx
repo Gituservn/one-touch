@@ -1,13 +1,13 @@
 import TitleSection from '@/components/TitleSection/TitleSection'
 import AboutUs from '@/components/AboutUs/AboutUs'
-import MenuList from '@/components/MenuList1/MenuList'
+import PreviewList from '@/components/PreviewList/PreviewList'
 
 export default function Home() {
   return (
     <main>
       <TitleSection />
       <AboutUs />
-      <MenuList />
+      <PreviewList />
     </main>
   )
 }

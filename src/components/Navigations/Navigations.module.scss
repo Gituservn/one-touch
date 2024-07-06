@@ -1,9 +1,13 @@
 .navigations {
+  font-family: Roboto;
+  font-size: 18px;
   &_list {
     gap: 152px;
     display: flex;
     padding: 0;
-    margin: 0;
+    @media (max-width: 870px) {
+      gap: 20px;
+    }
     &__item {
       list-style: none;
       margin: 0;
@@ -14,5 +18,8 @@
         color: #000;
       }
     }
+  }
+  @media (max-width: 870px) {
+    display: none;
   }
 }

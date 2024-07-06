@@ -1,0 +1,8 @@
+.contactsLink{
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 18px;
+  @media (max-width: 870px) {
+    display: none;
+  }
+}

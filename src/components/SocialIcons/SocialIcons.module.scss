@@ -1,4 +1,14 @@
 .iconsGroup {
   display: flex;
   gap: 20px;
+
+  svg {
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #fcac45;
+    }
+  }
+
 }

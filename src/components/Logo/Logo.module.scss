@@ -2,5 +2,12 @@
   flex-wrap: nowrap;
   margin: 0;
   font-size: 40px;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #FCAC45;
+  }
 
 }

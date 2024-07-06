@@ -1,20 +1,20 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-
+import { useState } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 import MealItem from '@/components/MealItem/MealItem'
 import useFetchMeals, { Meal } from '@/hooks/useMeals'
 import truncateInstructions from '@/utils/truncateInstructions'
 
 import styles from './Menu.module.scss'
+import Loader from '@/components/Loader/Loader'
 
 const Menu = () => {
   const { meals, loading } = useFetchMeals()
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredMeals, setFilteredMeals] = useState<Meal[]>([])
-
-
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 870px)')
   const handleSearch = () => {
     if (searchTerm) {
       const filtered = meals.filter((meal) =>
@@ -26,26 +26,32 @@ const Menu = () => {
     }
   }
 
-
   if (loading) {
-    return <div className={styles.menu__loading}>Loading...</div>
+    return <Loader />
   }
-
+  //set auto height image
   const renderMeals = () => {
     if (filteredMeals.length > 0) {
       return filteredMeals.map((meal: Meal) => <MealItem key={meal.idMeal} meal={meal} />)
     } else {
       return meals.map((meal: Meal) => (
         <li key={meal.idMeal} className={styles.menu__root_list_item}>
+          {isSmallDevice ? (
+            <h3 className={styles.menu__root_list_content_title}>{meal.strMeal}</h3>
+          ) : null}
           <Image
             className={styles.menu__root_list_image}
             src={meal.strMealThumb}
             alt={meal.strMeal}
+            layout={isSmallDevice ? 'responsive' : 'undefined'}
             width={538}
-            height={400}
+            height={275}
           />
+
           <div className={styles.menu__root_list_content}>
-            <h3 className={styles.menu__root_list_content_title}>{meal.strMeal}</h3>
+            {!isSmallDevice ? (
+              <h3 className={styles.menu__root_list_content_title}>{meal.strMeal}</h3>
+            ) : null}
             <p className={styles.menu__root_list_content_instructions}>
               {truncateInstructions(meal.strInstructions)}
             </p>
@@ -54,7 +60,6 @@ const Menu = () => {
       ))
     }
   }
-
 
   return (
     <section className={styles.menu}>
