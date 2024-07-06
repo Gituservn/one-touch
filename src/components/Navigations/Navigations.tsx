@@ -1,7 +1,11 @@
 import styles from './Navigations.module.scss'
-const Navigations = () => {
+
+export interface NavigationsProps {
+  mobile?: boolean
+}
+const Navigations = ({ mobile }: NavigationsProps) => {
   return (
-    <nav className={styles.navigations}>
+    <nav className={mobile ? styles['navigations-mobile'] : styles.navigations}>
       <ul className={styles.navigations_list}>
         <li className={styles.navigations_list__item}>
           <a className={styles.link} href="/menu">

@@ -1,8 +1,9 @@
 import styles from './ContactsLink.module.scss'
 import Link from 'next/link'
-const ContactsLink = () => {
+import { NavigationsProps } from '@/components/Navigations/Navigations'
+const ContactsLink = ({ mobile }: NavigationsProps) => {
   return (
-    <Link className={styles.contactsLink} href="#contacts">
+    <Link className={mobile ? styles['contactsLink-mobile'] : styles.contactsLink} href="#contacts">
       Contacts
     </Link>
   )
